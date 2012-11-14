@@ -1,23 +1,21 @@
-html
-  head
-    title Bienvenido a NodeQuizAdmin
-    include templates/head
-  body
-    .login
-        h1(style='color: #ffffff;') Bienvenido a NodeQuizAdmin
-      .inner-login
-        h3 Por favor, haga login para continuar.
-        br
-        form
-          div.control-group
-            div.controls
-              input#user(type='text', placeholder='Usuario')
-          div.control-group
-            div.controls
-              input#password(type='password', placeholder='Contraseña')
-          div.control-group
-            div.controls
-              label(for='remember') Recordarme
-              input#remember(type='checkbox')
-          button.btn.btn-info(type='submit') Entrar
-        small NodeQuizAdmin - ¡Tu manejador de examenes online!
+extends templates/layout
+
+block content
+  .login
+      h1(style='color: #ffffff;') Bienvenido a NodeQuizAdmin
+    .inner-login
+      h3 Por favor, haga login para continuar.
+      br
+      form
+        .control-group
+          .controls
+            input#user(type='text', placeholder='Usuario')
+        .control-group
+          .controls
+            input#password(type='password', placeholder='Contraseña')
+        .control-group
+          .controls
+            label(for='remember') Recordarme
+            input#remember(type='checkbox')
+        button.btn.btn-info(type='submit') Entrar
+      small NodeQuizAdmin - ¡Tu manejador de examenes online!
