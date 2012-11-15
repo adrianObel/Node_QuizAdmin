@@ -1,21 +1,21 @@
 extends templates/layout
-
 block content
-  .login
-      h1(style='color: #ffffff;') Bienvenido a NodeQuizAdmin
-    .inner-login
-      h3 Por favor, haga login para continuar.
-      br
-      form(action='/', method='POST')
-        .control-group
-          .controls
-            input#user(name='user', type='text', placeholder='Usuario')
-        .control-group
-          .controls
-            input#password(name='pass', type='password', placeholder='Contraseña')
-        .control-group
-          .controls
-            label(for='remember') Recordarme
-            input#remember(type='checkbox')
-        button.btn.btn-info(type='submit') Entrar
-      small NodeQuizAdmin - ¡Tu manejador de examenes online!
+  body.body-login
+    .login
+        h1(style='color: #ffffff;') Bienvenido a NodeQuizAdmin
+      .inner-login
+        h3 Por favor, haga login para continuar.
+        br
+        form(action='/', method='POST')
+          .control-group
+            .controls
+              input#user(name='user', type='text', placeholder='Usuario')
+          .control-group
+            .controls
+              input#password(name='pass', type='password', placeholder='Contraseña')
+          .control-group
+            .controls
+              label(for='remember') Recordarme
+              input#remember(type='checkbox')
+          button.btn.btn-info(type='submit') Entrar
+        small NodeQuizAdmin - ¡Tu manejador de examenes online!

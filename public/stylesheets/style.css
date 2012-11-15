@@ -1,9 +1,7 @@
-body {
-  padding: 50px;
+.body-login {
+  padding-top: 40px;
 }
 .login {
-  margin-left: -100px;
-  margin-right: -100px;
   text-align: center;
   background-color: #1f1f1f;
 }
