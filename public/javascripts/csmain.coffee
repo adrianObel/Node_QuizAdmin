@@ -17,10 +17,23 @@ define [
       type: 'post'
       data: serializedData
       success: (res, status, XHR) ->
-        console.log 'worked?'
+        console.log 'success'
       error: (XHR, status, err) ->
-        console.log "Errors: #{status}\#{err}"
+        console.log "Errors: #{status}\n#{err}"
       complete: ->
         $inputs.removeAttr 'disabled'
 
 
+  $('#logout').click (e) ->
+
+    $.ajax 
+      url:'/session'
+      type: 'delete'
+      data: ''
+      success: (res, status, XHR) ->
+        console.log 'success'
+      error: (XHR, status, err) ->
+        console.log "Errors: #{status}\n#{err}"
+      complete: ->
+        window.location = '/login'
+        
