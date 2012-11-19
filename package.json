@@ -13,6 +13,7 @@
   "dependencies": {
     "express": "3.0.3"
   , "coffee-script": "*"
+  , "mongoose": "*"
   , "jade": "*"
   , "stylus": "*"
   }
