@@ -5,12 +5,19 @@ define [
   'backbone'
 ], ($, _, Backbone) ->
 
-  class HomeListView extends Backbone.View
+  class HomeView extends Backbone.View
     el: $('#container')
-    render: ->
-      alert 'works'
-      test = document.createElement 'h2'
-      test.text 'Hello World'
-      @el.append text
 
-    HomeListView
+    initialize: ->
+      @render()
+
+    render: ->
+      console.log 'rendering home'
+
+    events: 
+      'click #logout': 'onLogout'
+
+    onLogout: (e) ->
+      console.log 'logoff'
+
+    HomeView
