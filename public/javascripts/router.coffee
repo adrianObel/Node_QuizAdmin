@@ -3,12 +3,11 @@ define [
   'underscore'
   'backbone'
   'cs!views/home'
-], ($, _, Backbone, Session, HomeListView) ->
+], ($, _, Backbone, HomeView) ->
 
   class AppRouter extends Backbone.Router
     routes:
       '': 'home'
-      '/': 'home'
 
       #Default route
       '*actions': 'defaultAction'
@@ -16,14 +15,9 @@ define [
   initialize = ->
     app_router = new AppRouter
 
-    app_router.on 'home', ->
-      homeListView = new HomeListView()
-      homeListView.render()
+    app_router.on 'route:home', ->
+      home_view = new HomeView()
 
-
-    app_router.on 'defaultAction', (actions) ->
-      console.log "no route: #{actions}"
-    
     Backbone.history.start()
 
   {
