@@ -4,36 +4,36 @@ define [
   'jquery'
 ], ($) ->
 
-  $('#login').submit (e) ->
+  # $('#login').submit (e) ->
 
-    $form = $(@)
-    $inputs = $form.find 'input, select, button, textarea'
+  #   $form = $(@)
+  #   $inputs = $form.find 'input, select, button, textarea'
 
-    serializedData = $form.serialize()
-    $inputs.attr 'disabled', 'disabled'
+  #   serializedData = $form.serialize()
+  #   $inputs.attr 'disabled', 'disabled'
 
-    $.ajax 
-      url:'/session'
-      type: 'post'
-      data: serializedData
-      success: (res, status, XHR) ->
-        console.log 'success'
-      error: (XHR, status, err) ->
-        console.log "Errors: #{status}\n#{err}"
-      complete: ->
-        $inputs.removeAttr 'disabled'
+  #   $.ajax 
+  #     url:'/session'
+  #     type: 'post'
+  #     data: serializedData
+  #     success: (res, status, XHR) ->
+  #       console.log 'success'
+  #     error: (XHR, status, err) ->
+  #       console.log "Errors: #{status}\n#{err}"
+  #     complete: ->
+  #       $inputs.removeAttr 'disabled'
 
 
-  $('#logout').click (e) ->
+  # $('#logout').click (e) ->
 
-    $.ajax 
-      url:'/session'
-      type: 'delete'
-      data: ''
-      success: (res, status, XHR) ->
-        console.log 'success'
-      error: (XHR, status, err) ->
-        console.log "Errors: #{status}\n#{err}"
-      complete: ->
-        window.location = '/login'
-        
+  #   $.ajax 
+  #     url:'/session'
+  #     type: 'delete'
+  #     data: ''
+  #     success: (res, status, XHR) ->
+  #       console.log 'success'
+  #     error: (XHR, status, err) ->
+  #       console.log "Errors: #{status}\n#{err}"
+  #     complete: ->
+  #       window.location = '/login'
+  #       

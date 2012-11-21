@@ -3,7 +3,8 @@ define [
   'underscore'
   'backbone'
   'cs!views/home'
-], ($, _, Backbone, HomeView) ->
+  'cs!views/login'
+], ($, _, Backbone, HomeView, LoginView) ->
 
   class AppRouter extends Backbone.Router
     routes:
@@ -16,7 +17,8 @@ define [
     app_router = new AppRouter
 
     app_router.on 'route:home', ->
-      home_view = new HomeView()
+     # home_view = new HomeView()
+      login_view = new LoginView()
 
     Backbone.history.start()
 
