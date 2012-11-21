@@ -17,7 +17,10 @@ app.db     = db
 app.server = server
 
 # Database Models
-mongoose.model  'User', require('./app/models/user')(app)
+mongoose.model  'User'   , require('./app/models/user'   )(app)
+mongoose.model  'Staff'  , require('./app/models/staff'  )(app)
+mongoose.model  'Teacher', require('./app/models/teacher')(app)
+mongoose.model  'Student', require('./app/models/student')(app)
 
 server.configure ->
   server.set 'port', process.env.PORT or 3000
@@ -32,8 +35,12 @@ server.configure ->
   server.use server.router
   server.use require('stylus').middleware __dirname + '/public'
   server.use express.static path.join __dirname, 'public'
-  server.set 'db', main : db
-                 , users: db.model 'User'
+  server.set 'db', 
+    main    : db
+    users   : db.model 'User'
+    staff   : db.model 'Staff'
+    teachers: db.model 'Teacher'
+    students: db.model 'Student'
 
 server.configure 'development', ->
   server.use express.errorHandler()

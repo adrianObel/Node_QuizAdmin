@@ -16,5 +16,5 @@ sess.start = (req, res) ->
 
 sess.destroy = (req, res) ->
   req.session.regenerate -> 
-    res.send '{}
+    res.send '{}'
 
