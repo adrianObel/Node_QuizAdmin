@@ -15,7 +15,7 @@ Student = new Schema
   _id       : ObjectId
   student_id: type: String, index: true
   teacher   : [String]
-  exams     : [String]
+  exams     : [ObjectId]
 
 Student.create = (_student_id, _teacher, _exams) ->
   date = new Date()
