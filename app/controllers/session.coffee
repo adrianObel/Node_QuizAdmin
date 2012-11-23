@@ -1,5 +1,6 @@
 # Controller for Session start and destroy
 app = null
+db  = null
 
 module.exports = sess = (_app) ->
   app = _app
@@ -7,13 +8,26 @@ module.exports = sess = (_app) ->
 
 
 sess.start = (req, res) ->
-  user = req.body.user
+  params =
+    login: req.body.user
+    pass : req.body.pass
 
-  if user?
-    req.session.user = user
-    res.render 'index', title: 'QuizAdmin'
-                      , user : user
+  db  = app.server.set 'db' if not db
 
+  if params.login? and params.pass? 
+    db.users.findOne {'login': params.login,'pass': params.pass}, (err, user) ->
+      if user?
+        _user =
+          name:
+            first: user.name.first
+            last : user.name.last
+
+        req.session.user = _user
+        res.send 'true'
+      else 
+        res.send 'false'
+  else
+    res.send 'false'
 sess.destroy = (req, res) ->
   req.session.regenerate -> 
     res.send '{}'
