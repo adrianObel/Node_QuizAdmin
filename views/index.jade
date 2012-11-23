@@ -3,8 +3,7 @@ block content
   include templates/menu
   .container
     script(type='text/javascript')
-      - window.local_data=!{JSON.stringify(data)}
-      - alert(data)
+      window.userId = "#{id}";
     block admin
       br
       h1= title
