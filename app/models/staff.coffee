@@ -12,15 +12,16 @@ module.exports = Staff = (_app) ->
 
 # Staff mongoose schema
 Staff = new Schema 
-  _id: type: Number
+  _id     : ObjectId
+  staff_id: type: String, index: true
 
-Staff.create = (_login, _pass, _name, _birth_date) ->
+Staff.create = (_staff_id) ->
   date = new Date()
   db   = app.set 'db' if not db
 
   # Lets create a new staff memeber
   staff = new db.staff
-    # Staff stuff here
+    staff_id: _staff_id
 
   # Save staff member in database
   staff.save (err) ->  return cb err if err

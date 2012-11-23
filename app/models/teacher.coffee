@@ -12,15 +12,17 @@ module.exports = Teacher = (_app) ->
 
 # Teacher mongoose schema
 Teacher = new Schema 
-  _id: type: Number
+  _id       : ObjectId
+  teacher_id: type: String, index: true
 
-Teacher.create = (_login, _pass, _name, _birth_date) ->
+
+Teacher.create = (_teacher_id) ->
   date = new Date()
   db   = app.set 'db' if not db
 
   # Lets create a new teacher
   teacher = new db.teachers
-    # Teacher stuff here :D
+    teacher_id: _teacher_id
 
   # Save teacher in database
   teacher.save (err) ->  return cb err if err
