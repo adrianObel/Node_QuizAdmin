@@ -2,6 +2,8 @@ extends templates/layout
 block content
   include templates/menu
   .container
+    script(type='text/javascript')
+      window.userId = "#{id}";
     block admin
       br
       h1= title

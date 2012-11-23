@@ -22,7 +22,12 @@ sess.start = (req, res) ->
           name:
             first: user.name.first
             last : user.name.last
-
+          id  : user.login
+        
+        # Update last login
+        db.users.update {'login': params.login}, {$set:{'last_login': new Date()}}
+        
+        # Save user in session
         req.session.user = _user
         res.send 'true'
       else 

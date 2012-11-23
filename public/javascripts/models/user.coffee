@@ -6,5 +6,7 @@ define [
     urlRoot : '/api/1/user'
 
     defaults:
-      name: ''
-      last: ''
+      name : ''
+      last : ''
+      email: ''
+      type : ''
