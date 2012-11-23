@@ -5,6 +5,7 @@ define [
   'cs!views/home'
 ], ($, _, Backbone, HomeView) ->
 
+  # Backbone Router for hashroutes
   class AppRouter extends Backbone.Router
     routes:
       '': 'home'
@@ -12,6 +13,7 @@ define [
       #Default route
       '*actions': 'defaultAction'
 
+  # Called on router init
   initialize = ->
     app_router = new AppRouter
 

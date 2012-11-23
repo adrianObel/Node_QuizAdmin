@@ -3,7 +3,8 @@ define [
   'jquery'
   'underscore'
   'backbone'
-], ($, _, Backbone) ->
+  'cs!models/user'
+], ($, _, Backbone, UserModel) ->
 
   class HomeView extends Backbone.View
     el: '#container'
@@ -14,10 +15,11 @@ define [
     render: ->
       console.log 'rendering home'
 
+
     events: 
       'click #logout': 'onLogout'
 
     onLogout: (e) ->
       console.log 'logoff'
 
-    HomeView
+    
