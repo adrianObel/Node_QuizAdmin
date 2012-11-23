@@ -28,7 +28,7 @@ require([
       }
       else {
         $('.contenedor').fadeOut('slow',function() {
-          window.location = '/'
+          window.location = '/#/'
         })        
       }
     }
