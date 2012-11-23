@@ -16,21 +16,22 @@ User.getUser = (req, res) ->
   if params?
     # Lets check what kind of user he is
     userType = null
-    
 
-    #search in student
-    db.students.findOne 'student_id': params, 'student_id', (err, student) ->
-      if student 
-        userType = 2
-      else
-        # search in teachers
-        db.teachers.findOne 'teacher_id': params, 'teacher_id', (err, teacher) ->
-          if teacher
-            userType = 1
-          else
-            #seach in staff
-            db.staff.findOne 'staff_id': params, 'staff_id', (err, staff) ->
-              userType = 0 if staff 
+
+    # #search in student
+    # db.students.findOne {'student_id': params}, 'student_id', (err, student) ->
+    #   userType = 2 if student 
+    
+    # #search in teachers
+    # if not userType?    
+    #   # search in teachers
+    #   db.teachers.findOne {'teacher_id': params}, 'teacher_id', (err, teacher) ->
+    #     userType = 1 if teacher
+    
+    # #seach in staff      
+    # if not userType?
+    #   db.staff.findOne {'staff_id': params}, (err, staff) ->
+    #     userType = 0 if staff 
 
     # Look for user details
     db.users.findOne {'login': params}, (err, user) ->
@@ -41,7 +42,7 @@ User.getUser = (req, res) ->
           name : user.name.first
           last : user.name.last
           email: user.email
-          type : userType
+          type : user.type
 
         res.send userFound
 
