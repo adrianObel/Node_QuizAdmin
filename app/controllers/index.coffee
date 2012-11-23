@@ -12,7 +12,7 @@ page.render = (req, res) ->
   # If there is user session render index otherwise redirect to login
   if user?
     res.render "index", title: 'QuizAdmin'
-                      , user : user
+                      , user : "#{user.name.first} #{user.name.last}"
   else
     res.redirect '/login'
 
