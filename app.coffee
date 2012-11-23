@@ -21,6 +21,8 @@ mongoose.model 'User'   , require('./app/models/user'   )(app)
 mongoose.model 'Staff'  , require('./app/models/staff'  )(app)
 mongoose.model 'Teacher', require('./app/models/teacher')(app)
 mongoose.model 'Student', require('./app/models/student')(app)
+mongoose.model 'Exam'   , require('./app/models/exam'   )(app)
+
 
 server.configure ->
   server.set 'port', process.env.PORT or 3000
@@ -41,6 +43,7 @@ server.configure ->
     staff   : db.model 'Staff'
     teachers: db.model 'Teacher'
     students: db.model 'Student'
+    exams   : db.model 'Exam'
 
 server.configure 'development', ->
   server.use express.errorHandler()
