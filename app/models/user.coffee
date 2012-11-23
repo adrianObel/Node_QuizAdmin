@@ -19,7 +19,8 @@ User = new Schema
     first: type: String, required:true
     last : type: String, required:true
   email         : type: String, required:true
-  birth_date    : type: Date, required:true   
+  birth_date    : type: Date  , required:true
+  type          : type: Number   
   last_login    : type: Date, default: Date.now
   creation_date : type: Date, default: Date.now
 
