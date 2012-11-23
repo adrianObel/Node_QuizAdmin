@@ -2,7 +2,8 @@ require ['cs!app'], (App) -> App.initialize()
   
 define [
   'jquery'
-], ($) ->
+  'bootstrap'
+], ($, BT) ->
 
   $logout = $('#logout')
 
