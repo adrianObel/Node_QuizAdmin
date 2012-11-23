@@ -13,19 +13,19 @@ module.exports = User = (_app) ->
 # User mongoose schema
 User = new Schema 
   _id           : ObjectId
-  login         : type: String
-  pass          : type: String
+  login         : type: String, required:true, index: true 
+  pass          : type: String, required:true
   name:
-    first: type: String
-    last : type: String
-  email         : type: String
-  birth_date    : type: Date   
+    first: type: String, required:true
+    last : type: String, required:true
+  email         : type: String, required:true
+  birth_date    : type: Date, required:true   
   last_login    : type: Date, default: Date.now
   creation_date : type: Date, default: Date.now
 
 User.create = (_login, _pass, _name, _birth_date) ->
   date = new Date()
-  db   = app.set 'db' if not db
+  db = app.server.set 'db' if not db
   pass = crypto
     .createHash('md5')
     .update(_pass)
@@ -34,7 +34,7 @@ User.create = (_login, _pass, _name, _birth_date) ->
   # Lets create a new user
   user = new db.users
     login        : _login
-    pass         : pass
+    pass         : _pass
     name:
       first: _name.first
       last : _name.last
@@ -43,5 +43,4 @@ User.create = (_login, _pass, _name, _birth_date) ->
     creation_date: date
 
   # Save user in database
-  user.save (err) ->  return cb err if err
-
+  user.save (err) ->  return callback err if err
