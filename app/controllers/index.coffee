@@ -11,9 +11,9 @@ page.render = (req, res) ->
 
   # If there is user session render index otherwise redirect to login
   if user?
-    res.render "index", title: 'QuizAdmin'
-                      , user : "#{user.name.first} #{user.name.last}"
-                      , data : JSON.stringify({a:'flnwef'})
+    res.render "index", title      : 'QuizAdmin'
+                      , user       : "#{user.name.first} #{user.name.last}"
+                      , id         : user.id
   else
     res.redirect '/login'
 
