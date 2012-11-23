@@ -13,6 +13,7 @@ page.render = (req, res) ->
   if user?
     res.render "index", title: 'QuizAdmin'
                       , user : "#{user.name.first} #{user.name.last}"
+                      , data : JSON.stringify({a:'flnwef'})
   else
     res.redirect '/login'
 
