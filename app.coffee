@@ -10,17 +10,17 @@ mongoose = require 'mongoose'
 
 app      = {}
 server   = express()
-db       = mongoose.createConnection 'localhost', 'QuizAdmin' 
+db       = mongoose.createConnection 'mongodb://localhost/QuizAdmin' 
 
 # App wide GLOBALS
 app.db     = db
 app.server = server
 
 # Database Models
-mongoose.model  'User'   , require('./app/models/user'   )(app)
-mongoose.model  'Staff'  , require('./app/models/staff'  )(app)
-mongoose.model  'Teacher', require('./app/models/teacher')(app)
-mongoose.model  'Student', require('./app/models/student')(app)
+mongoose.model 'User'   , require('./app/models/user'   )(app)
+mongoose.model 'Staff'  , require('./app/models/staff'  )(app)
+mongoose.model 'Teacher', require('./app/models/teacher')(app)
+mongoose.model 'Student', require('./app/models/student')(app)
 
 server.configure ->
   server.set 'port', process.env.PORT or 3000
