@@ -16,11 +16,14 @@
 #user {
   height: 30px;
 }
-#password {
+#passwordLogin {
   height: 30px;
 }
 .menuItems {
   float: right;
   margin-top: 2px;
   opacity: 0.25;
+}
+.control-group {
+  width: 395px;
 }

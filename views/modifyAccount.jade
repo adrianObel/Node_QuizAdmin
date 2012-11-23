@@ -1,0 +1,33 @@
+extends templates/layout
+block content
+  include templates/menu
+  .container
+    .fap(align='center')
+      h1 Modifica tu cuenta
+      br
+      form#modifyAccForm.form-horizontal
+        .control-group
+          label.control-label(for='name') Nombre
+          .controls
+            input#name(type='text', placeholder='Por ejemplo, Juan.')
+        .control-group
+          label.control-label(for='lastname') Apellido
+          .controls
+            input#lastname(type='text', placeholder='Por ejemplo, Gonzalez.')
+        .control-group
+          label.control-label(for='password') Contraseña
+          .controls
+            input#password(type='password')
+        .control-group
+          label.control-label(for='email') Direccion de correo electronico
+          .controls
+            input#email(type='text', placeholder='Por ejemplo, juangonzalez@dominio.com.')
+        .control-group
+          label.control-label(for='photoUpload') Imagen del perfil
+          .controls
+            input#photoUpload(type='file', placeholder='Por ejemplo, Juan.')
+          br
+          button.btn.btn-primary(type='submit') Enviar
+    script(data-main='javascripts/main', src='javascripts/require.js')
+      
+

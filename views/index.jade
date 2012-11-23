@@ -2,9 +2,6 @@ extends templates/layout
 block content
   include templates/menu
   .container
-    script(type='text/javascript')
-      - window.local_data=!{JSON.stringify(data)}
-      - alert(data)
     block admin
       br
       h1= title
@@ -15,11 +12,33 @@ block content
           h3 Menú
           ul.nav.nav-list
             li
-              a(href='#') Home
+              a(href='#') 
+                i.icon-home
+                |Home
+                i.icon-chevron-right.menuItems
             li
-              a(href='#') Profesores
+              a.accordion-toggle(href='#collapseOne', data-toggle='collapse') 
+                i.icon-plus-sign
+                |Acciones
+                i.icon-chevron-right.menuItems
+            div#collapseOne.accordion-body.collapse.in
+              div.accordion-inner
+                ul.nav.nav-list
+                  li
+                    a(href='#')
+                      i.icon-book 
+                      |Ver examenes
+                      i.icon-chevron-right.menuItems
+                  li
+                    a(href='#')
+                      i.icon-check 
+                      |Ver notas
+                      i.icon-chevron-right.menuItems
             li
-              a(href='#') Alumnos
+              a(href='#') 
+                i.icon-search
+                |Buscar profesor
+                i.icon-chevron-right.menuItems
         .span9
           h1 Contenido
           p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget nunc nec tortor volutpat dictum. In hac habitasse platea dictumst. Maecenas nulla enim, pharetra ac aliquam sed, auctor ut libero. Sed eget cursus justo. Aliquam erat erat, posuere at faucibus a, malesuada sed ipsum. Sed sit amet facilisis tortor.

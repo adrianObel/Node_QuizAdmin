@@ -10,6 +10,7 @@ module.exports = (_app)->
   controllers.login   = require('./controllers/login'  )(app)
   controllers.session = require('./controllers/session')(app)
   controllers.user    = require('./controllers/user'   )(app)
+  controllers.modify  = require('./controllers/modify' )(app)
 
   # General route handling
   app.server.get  '/login'       , controllers.login.render
@@ -21,3 +22,5 @@ module.exports = (_app)->
 
   # Api for user interaction
   app.server.get  '/api/1/user/:id'  , controllers.user.getUser
+
+  app.server.get '/modifyAccount', controllers.modify.render

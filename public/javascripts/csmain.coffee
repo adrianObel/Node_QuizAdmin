@@ -4,7 +4,7 @@ define [
   'jquery'
   'bootstrap'
 ], ($, BT) ->
-
+  # When click on logout
   $logout = $('#logout')
 
   $logout.click (e) ->
@@ -19,4 +19,7 @@ define [
         console.log "Errors: #{status}\n#{err}"
       complete: ->
         window.location = '/login'
-        
+  
+  $modify = $('#modify')
+  $modify.click (e) ->
+    window.location='/modifyAccount'
