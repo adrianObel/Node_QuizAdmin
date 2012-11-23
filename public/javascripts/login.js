@@ -19,7 +19,7 @@ require([
 
     $.ajax({
       url:'user/connect'
-    , type:'post'
+    , type:'POST'
     , data: serializedData
     , success: function(res, status, XHR) {
       if(res === 'false') {
@@ -27,8 +27,9 @@ require([
        $errLabel.text('Usuario o contrasena incorrecto')
       }
       else {
-        $form.fadeOut('slow')
-        window.location = '/'
+        $('.contenedor').fadeOut('slow',function() {
+          window.location = '/'
+        })        
       }
     }
     , error: function(XHR, status, err) {

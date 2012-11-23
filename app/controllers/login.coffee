@@ -8,7 +8,7 @@ module.exports = page = (_app) ->
 
 page.render = (req, res) ->
   user = req.session.user
-
+  
   if not user?
     res.render 'login', title: 'QuizAdmin'
   else

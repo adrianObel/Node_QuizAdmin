@@ -16,6 +16,7 @@ sess.start = (req, res) ->
 
   if params.login? and params.pass? 
     db.users.findOne {'login': params.login,'pass': params.pass}, (err, user) ->
+     
       if user?
         _user =
           name:
@@ -28,6 +29,7 @@ sess.start = (req, res) ->
         res.send 'false'
   else
     res.send 'false'
+
 sess.destroy = (req, res) ->
   req.session.regenerate -> 
     res.send '{}'
