@@ -5,14 +5,15 @@ define [
 ], ($) ->
 
   $logout = $('#logout')
+
   $logout.click (e) ->
-    $logout.preventDefault
+    e.preventDefault()
     $.ajax 
-      url:'/session'
-      type: 'delete'
+      url:'/user/connect'
+      type: 'DELETE'
       data: ''
       success: (res, status, XHR) ->
-        console.log 'success'
+        window.location = '/login'
       error: (XHR, status, err) ->
         console.log "Errors: #{status}\n#{err}"
       complete: ->
