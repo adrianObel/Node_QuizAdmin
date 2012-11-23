@@ -4,23 +4,25 @@ define [
   'underscore'
   'backbone'
   'cs!models/user'
-], ($, _, Backbone, UserModel) ->
+  'text!/../templates/sideMenuAdmin.html'
+], ($, _, Backbone, UserModel, adminMenu) ->
 
   class HomeView extends Backbone.View
-    el: '#container'
+    el: '#content'
 
     initialize: ->
       @render()
 
     render: ->
-      console.log 'rendering home'
-      uid   = window.userId
+      that = @
+      uid  = window.userId
       user_model = new UserModel id: uid
 
+      adminTemplate = _.template adminMenu, {}
       # find user in db
       user_model.fetch 
         success: (user) ->
-          alert JSON.stringify user_model  
+          that.$el.append adminTemplate
 
     events: 
       'click #logout': 'onLogout'
