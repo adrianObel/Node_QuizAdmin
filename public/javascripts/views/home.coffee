@@ -4,9 +4,9 @@ define [
   'underscore'
   'backbone'
   'cs!models/user'
-  'text!/../templates/content'
+  'cs!views/content/home'
   'text!/../templates/sideMenuAdmin.html'
-], ($, _, Backbone, UserModel, ContentHolder, AdminMenu) ->
+], ($, _, Backbone, UserModel, ContentHomeView, AdminMenu) ->
 
   class HomeView extends Backbone.View
     el: '#content'
@@ -19,19 +19,22 @@ define [
       uid  = window.userId
       user_model = new UserModel id: uid
 
-      adminTemplate  = _.template AdminMenu, {}
-      content_holder = _.template ContentHolder 
+      admin_template = _.template AdminMenu, {}
+      
       # find user in db
       user_model.fetch 
         success: (user) ->
           userType = user_model.get 'type'
           # if user is an admin
           if userType is 0
-            that.$el.append adminTemplate
-    events: 
-      'click #logout': 'onLogout'
+            that.$el.append admin_template
+            that.content_page  = new ContentHomeView()
 
-    onLogout: (e) ->
-      console.log 'logoff'
+    events: 
+      'click #goHome': 'goHome'
+
+    goHome: (e) ->
+      @content_page.render()
+      
 
     
