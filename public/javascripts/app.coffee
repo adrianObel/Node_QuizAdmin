@@ -1,9 +1,6 @@
 define [
-  'jquery'
-  'underscore'
-  'backbone'
   'cs!router'
-], ($, _, Backbone, Router) ->
+], (Router) ->
 
   initialize = -> Router.initialize()
 

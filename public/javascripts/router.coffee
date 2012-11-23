@@ -8,8 +8,8 @@ define [
 
   class AppRouter extends Backbone.Router
     routes:
-      '': 'home'
-
+      '': 'login'
+      'home': 'home'
       #Default route
       '*actions': 'defaultAction'
 
@@ -17,7 +17,10 @@ define [
     app_router = new AppRouter
 
     app_router.on 'route:home', ->
-     # home_view = new HomeView()
+      home_view = new HomeView()
+      alert 'lol'
+
+    app_router.on 'route:login', ->
       login_view = new LoginView()
 
     Backbone.history.start()

@@ -1,0 +1,1 @@
+{ "_id" : { "$oid" : "50ad313888fb149bfbedabae" }, "login" : "26108404", "pass" : "1234", "name" : { "first" : "adrian", "last" : "obelmejias" }, "email" : "obeladrian@gmail.com", "birth_date" : { "$date" : 1353527600255 } }

@@ -3,8 +3,9 @@ define [
   'jquery'
   'underscore'
   'backbone'
+  'cs!router'
   'text!/../templates/login.html'
-], ($, _, Backbone, LoginTemplate) ->
+], ($, _, Backbone, Router, LoginTemplate) ->
 
   class LoginView extends Backbone.View
     el: '.inner-login'
@@ -26,6 +27,8 @@ define [
       button = e.target
 
       $('#' + button.id).click ->
-        that.$el.fadeOut 'slow', ->
-          $('.login').fadeOut()
+        $('.body-login').fadeOut 'slow', ->
+          window.location = 'test/#/home'
+          #$('.login').fadeOut()
+
     LoginView

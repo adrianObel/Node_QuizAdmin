@@ -6,7 +6,7 @@ define [
 ], ($, _, Backbone) ->
 
   class HomeView extends Backbone.View
-    el: $('#container')
+    el: '#container'
 
     initialize: ->
       @render()
