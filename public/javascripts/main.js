@@ -9,9 +9,13 @@ require({
   , 'coffee-script': 'libs/coffee-script'
   }
 , shim: {
-    'bootstrap': {
-        deps: ['jquery'],
-        exports: 'jquery'
+    'backbone' : {
+      deps: ['jquery', 'underscore']
+    , exports: 'backbone'
+    }
+  , 'bootstrap': {
+        deps: ['jquery']
+      , exports: 'jquery'
       }
   }
 }, ['cs!csmain'])

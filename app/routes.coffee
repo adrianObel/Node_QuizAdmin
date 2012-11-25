@@ -24,8 +24,8 @@ module.exports = (_app)->
 
   # Api for user interaction
   app.server.get  '/api/1/user/:id', controllers.user.getUser
-  app.server.put  'api/1/user/'    , controllers.user.updateUser
-  app.server.del  'api/1/user/'    , controllers.user.deleteUser 
+  app.server.put  '/api/1/user/'    , controllers.user.updateUser
+  app.server.del  '/api/1/user/'    , controllers.user.deleteUser 
 
   # Api for teacher interaction
-  app.server.get  'api/1/teacher'  , controllers.teacher.getAllTeachers
+  app.server.get  '/api/1/teacher/' , controllers.teacher.getAllTeachers

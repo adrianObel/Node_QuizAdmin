@@ -19,9 +19,7 @@ define [
         title  : "Home"
         content: "ASDASD"
 
-      content_holder = _.template ContentHolder, pageData
+      content_holder = _.template ContentHolder, content: "ASDASD"
       @$el.append content_holder
 
-    goHome: (e) ->
-      
 
