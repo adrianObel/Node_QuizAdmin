@@ -33,10 +33,15 @@ define [
             that.content_page  = new ContentHomeView()
 
     events: 
-      'click #goHome': 'goHome'
+      'click #goHome'    : 'goHome'
+      'click #goTeachers': 'goTeachers'
 
     goHome: (e) ->
+      window.location.hash = '/'
       @content_page.render()
+
+    goTeachers: (e) ->
+      window.location.hash = '/teachers'
       
 
     

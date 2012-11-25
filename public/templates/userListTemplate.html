@@ -1,0 +1,20 @@
+<div id="content_pane" class="span9">
+  <h1><%=rc.title%></h1><div class="searchBar">
+  <input id="search" type="text" placeholder="Filtrar Profesores. Por ejemplo, Juan Alejo" class="search-query span9"/>
+</div>
+<br/>
+<div class="row">
+  <div class="span2 addTeacher">
+    <a class="addTeacher">
+      <img src="img/addUserIcon_.png" class="img-rounded"/>
+    </a>
+  </div>
+
+  <% _.each(rc.listTeachers, function(teacher) {%>
+    <div class="span2">
+      <a><img src="img/userDefault_.png" class="img-rounded"/></a>
+      <a href="#delete"><i class="icon-remove"></i></a>
+      <label><%=teacher.name%></label>
+    </div>
+  <%});%>
+</div>

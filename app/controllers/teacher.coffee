@@ -11,8 +11,11 @@ Teacher.getAllTeachers = (req, res) ->
  
   db = app.server.set 'db' if not db
 
-  db.teachers.find {}, 'teacher_id', (err, teacher) ->
+  # Look for all the teachers in the teachers collection
+  db.users.find { 'type': 1 }, 'name.first', (err, teacher) ->
     throw err if err
+
     # Send all the teachers found
-    res.send teacher
+    data = if teacher then teacher else ''
+    res.send data
 
