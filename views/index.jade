@@ -10,6 +10,71 @@ block content
       p Hola #{user}, bienvenido a #{title}
       br
       #content.row
-        
-    script(data-main='javascripts/main', src='javascripts/require.js')
+        .span3
+          h3 Menú
+          ul.nav.nav-list
+            li
+              a(href='#')
+                i.icon-home
+                |Home
+                i.icon-chevron-right.menuItems
+            li
+              a(href='#') 
+                i.icon-search
+                |Buscar alumnos
+                i.icon-chevron-right.menuItems
+            li
+              a.accordion-toggle(href='#collapseOne', data-toggle='collapse') 
+                i.icon-file
+                |Examenes
+                i.icon-chevron-right.menuItems
+            div#collapseOne.accordion-body.collapse.in 
+              div.accordion-inner
+                ul.nav.nav-list
+                  li
+                    a(href='#') Crear examen nuevo
+                      i.icon-chevron-right.menuItems
+                  li
+                    a(href='#') Ver examenes antíguos
+                      i.icon-chevron-right.menuItems
+        .span9
+          h1 Profesores
+          .searchBar
+            input#search.search-query.span9(type='text', placeholder='Filtrar Profesores. Por ejemplo, Juan Alejo')
+          br
+          .row
+            .span2.addTeacher
+              a(href='#')
+                img.img-rounded(src='img/addUserIcon_.png')
+            .span2
+              a(href='#')
+                img.img-rounded(src='img/userDefault_.png')
+              a(href='#delete')
+                i.icon-remove
+              label Nombre
+            .span2
+              a(href='#')
+                img.img-rounded(src='img/userDefault_.png')
+              a(href='#delete')
+                i.icon-remove
+              label Nombre
+            .span2
+              a(href='#')
+                img.img-rounded(src='img/userDefault_.png')
+              a(href='#delete')
+                i.icon-remove
+              label Nombre
+            .span2
+              a(href='#')
+                img.img-rounded(src='img/userDefault_.png')
+              a(href='#delete')
+                i.icon-remove
+              label Nombre
+            .span2
+              a(href='#')
+                img.img-rounded(src='img/userDefault_.png')
+              a(href='#delete')
+                i.icon-remove
+              label Nombre
+            script(data-main='javascripts/main', src='javascripts/require.js')
     
