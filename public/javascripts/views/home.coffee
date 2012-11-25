@@ -17,8 +17,10 @@ define [
     render: ->
       that = @
       uid  = window.userId
+      # Initiate backbone model
       user_model = new UserModel id: uid
 
+      $('side-menu').remove()
       admin_template = _.template AdminMenu, {}
       
       # find user in db
