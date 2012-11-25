@@ -11,21 +11,22 @@ module.exports = (_app)->
   controllers.session = require('./controllers/session')(app)
   controllers.user    = require('./controllers/user'   )(app)
   controllers.modify  = require('./controllers/modify' )(app)
-  controllers.teacher = require('./controllers/teacher')(app)
 
   # General route handling
-  app.server.get  '/login'         , controllers.login.render
-  app.server.get  '/'              , controllers.index.render
-  app.server.get  '/modifyAccount' , controllers.modify.render
+  app.server.get  '/login'          , controllers.login.render
+  app.server.get  '/'               , controllers.index.render
+  app.server.get  '/modifyAccount'  , controllers.modify.render
 
   # User sessions
-  app.server.post '/user/connect'  , controllers.session.start
-  app.server.del  '/user/connect'  , controllers.session.destroy
+  app.server.post '/user/connect'   , controllers.session.start
+  app.server.del  '/user/connect'   , controllers.session.destroy
 
   # Api for user interaction
-  app.server.get  '/api/1/user/:id', controllers.user.getUser
-  app.server.put  '/api/1/user/'    , controllers.user.updateUser
-  app.server.del  '/api/1/user/'    , controllers.user.deleteUser 
+  app.server.get  '/api/1/user/:id' , controllers.user.getUser
+  app.server.put  '/api/1/user/:id' , controllers.user.updateUser
+  app.server.del  '/api/1/user/:id' , controllers.user.deleteUser 
+  app.server.get  '/api/1/user'     , controllers.user.getAllUsers 
 
-  # Api for teacher interaction
-  app.server.get  '/api/1/teacher/' , controllers.teacher.getAllTeachers
+  # Api for user searching
+  app.server.get  '/api/1/teacher/' , controllers.user.getAllTeachers
+  app.server.get  '/api/1/student/' , controllers.user.getAllStudents

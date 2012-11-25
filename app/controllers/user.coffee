@@ -12,27 +12,7 @@ User.getUser = (req, res) ->
   db        = app.server.set 'db' if not db
   params    = req.params.id
 
-
   if params?
-    # Lets check what kind of user he is
-    userType = null
-
-
-    # #search in student
-    # db.students.findOne {'student_id': params}, 'student_id', (err, student) ->
-    #   userType = 2 if student 
-    
-    # #search in teachers
-    # if not userType?    
-    #   # search in teachers
-    #   db.teachers.findOne {'teacher_id': params}, 'teacher_id', (err, teacher) ->
-    #     userType = 1 if teacher
-    
-    # #seach in staff      
-    # if not userType?
-    #   db.staff.findOne {'staff_id': params}, (err, staff) ->
-    #     userType = 0 if staff 
-
     # Look for user details
     db.users.findOne {'login': params}, (err, user) ->
       throw err if err
@@ -46,3 +26,29 @@ User.getUser = (req, res) ->
 
         res.send userFound
 
+# Send all students
+User.getAllStudents = (req, res) ->
+
+  db = app.server.set 'db' if not db
+
+  # Look for all the teachers in the teachers collection
+  db.users.find { 'type': 2 }, 'name.first', (err, student) ->
+    throw err if err
+
+    # Send all the teachers found
+    data = if student then student else ''
+    res.send data
+
+
+# Send all teachers
+User.getAllTeachers = (req, res) ->
+ 
+  db = app.server.set 'db' if not db
+
+  # Look for all the teachers in the teachers collection
+  db.users.find { 'type': 1 }, 'name.first', (err, teacher) ->
+    throw err if err
+
+    # Send all the teachers found
+    data = if teacher then teacher else ''
+    res.send data

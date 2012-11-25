@@ -21,7 +21,6 @@ define [
       user_model = new UserModel id: uid
 
       $('side-menu').remove()
-      admin_template = _.template AdminMenu, {}
       
       # find user in db
       user_model.fetch 
@@ -29,19 +28,19 @@ define [
           userType = user_model.get 'type'
           # if user is an admin
           if userType is 0
+            admin_template = _.template AdminMenu, {}
             that.$el.append admin_template
             that.content_page  = new ContentHomeView()
 
     events: 
       'click #goHome'    : 'goHome'
       'click #goTeachers': 'goTeachers'
+      'click #goStudents': 'goStudents'
 
-    goHome: (e) ->
-      window.location.hash = '/'
-      @content_page.render()
+    goHome    : (e) -> window.location.hash = '/'
+    goTeachers: (e) -> window.location.hash = '/teachers'
+    goStudents: (e) -> window.location.hash = '/students'
 
-    goTeachers: (e) ->
-      window.location.hash = '/teachers'
       
 
     

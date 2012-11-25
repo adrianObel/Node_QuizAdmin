@@ -1,12 +1,12 @@
-# View of Teachet content screen
+# View of Student content screen
 define [
   'jquery'
   'underscore'
   'backbone'
   'text!/../templates/userListTemplate.html'
-], ($, _, Backbone, TeacherTemplate) ->
+], ($, _, Backbone, StudentTemplate) ->
 
-  class NewTeacherView extends Backbone.View
+  class StudentContentView extends Backbone.View
     el: '#content'
 
     initialize: ->
@@ -14,12 +14,12 @@ define [
 
     render: ->
       that = @
-      $('#content_pane').empty()
+      $('#content_pane').remove()
 
       # Lets search for all the teachers
       teachers = []
       $.ajax
-        url:'api/1/teacher/'
+        url:'api/1/student/'
         type:'GET'
         data: ''
         success: (res, status, XHR) ->
@@ -29,20 +29,20 @@ define [
         complete: ->
           #alert teachers
           pageData = 
-            title       : 'Profesores'
-            content     : 'ASDASD'
+            title       : 'Estudiantes'
             listTeachers: teachers
 
 
           # Top level underscore variable
           _.templateSettings.variable = "rc"
 
-          content_holder = _.template TeacherTemplate, pageData
+          content_holder = _.template StudentTemplate, pageData
           that.$el.append content_holder
 
     events:
-      'click .addTeacher': 'addTeacher'
+      'click .addUserDetails': 'addStudent'
 
-    addTeacher: (e) ->
-      window.location.hash = '/teachers/new'
+    addStudent: (e) ->
+      $('#content_pane').remove()
+      window.location.hash = '/students/new'
 

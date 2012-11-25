@@ -1,4 +1,4 @@
-# View of Teachet content screen
+# View of Teacher content screen
 define [
   'jquery'
   'underscore'
@@ -6,7 +6,7 @@ define [
   'text!/../templates/userListTemplate.html'
 ], ($, _, Backbone, TeacherTemplate) ->
 
-  class ContentHomeView extends Backbone.View
+  class TeacherContentView extends Backbone.View
     el: '#content'
 
     initialize: ->
@@ -14,7 +14,7 @@ define [
 
     render: ->
       that = @
-      $('#content_pane').empty()
+      $('#content_pane').remove()
 
       # Lets search for all the teachers
       teachers = []
@@ -33,7 +33,6 @@ define [
             content     : 'ASDASD'
             listTeachers: teachers
 
-
           # Top level underscore variable
           _.templateSettings.variable = "rc"
 
@@ -41,8 +40,9 @@ define [
           that.$el.append content_holder
 
     events:
-      'click .addTeacher': 'addTeacher'
+      'click .addUserDetails': 'addTeacher'
 
     addTeacher: (e) ->
+      $('#content_pane').remove()
       window.location.hash = '/teachers/new'
 
