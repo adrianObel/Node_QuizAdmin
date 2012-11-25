@@ -15,8 +15,11 @@ define [
     render: ->
       $('#content_pane').remove()
         
+      pageData = 
+        title  : "Home"
+        content: "ASDASD"
 
-      content_holder = _.template ContentHolder, content: "ASDASD"
+      content_holder = _.template ContentHolder, pageData
       @$el.append content_holder
 
     goHome: (e) ->
