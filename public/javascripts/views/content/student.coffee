@@ -16,8 +16,8 @@ define [
       that = @
       $('#content_pane').remove()
 
-      # Lets search for all the teachers
-      teachers = []
+      # Lets search for all the students
+      students = []
       $.ajax
         url:'api/1/student/'
         type:'GET'
@@ -25,13 +25,11 @@ define [
         success: (res, status, XHR) ->
           for item in res
             delete item['_id']
-            teachers.push {name: item.name.first}
+            students.push {name: item.name.first}
         complete: ->
-          #alert teachers
           pageData = 
-            title       : 'Estudiantes'
-            listTeachers: teachers
-
+            title    : 'Estudiantes'
+            listUsers: students
 
           # Top level underscore variable
           _.templateSettings.variable = "rc"

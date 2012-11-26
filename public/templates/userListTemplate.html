@@ -10,11 +10,11 @@
     </a>
   </div>
 
-  <% _.each(rc.listTeachers, function(teacher) {%>
+  <% _.each(rc.listUsers, function(user) {%>
     <div class="span2">
       <a><img src="img/userDefault_.png" class="img-rounded"/></a>
       <a href="#delete"><i class="icon-remove"></i></a>
-      <label><%=teacher.name%></label>
+      <label><%=user.name%></label>
     </div>
   <%});%>
 </div>

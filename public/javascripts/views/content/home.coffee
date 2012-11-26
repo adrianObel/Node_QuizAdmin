@@ -18,8 +18,9 @@ define [
       pageData = 
         title  : "Home"
         content: "ASDASD"
-
-      content_holder = _.template ContentHolder, content: "ASDASD"
+        
+      _.templateSettings.variable = "rc"
+      content_holder = _.template ContentHolder, pageData
       @$el.append content_holder
 
 

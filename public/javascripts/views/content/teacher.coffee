@@ -27,11 +27,9 @@ define [
             delete item['_id']
             teachers.push {name: item.name.first}
         complete: ->
-          #alert teachers
           pageData = 
-            title       : 'Profesores'
-            content     : 'ASDASD'
-            listTeachers: teachers
+            title    : 'Profesores'
+            listUsers: teachers
 
           # Top level underscore variable
           _.templateSettings.variable = "rc"
