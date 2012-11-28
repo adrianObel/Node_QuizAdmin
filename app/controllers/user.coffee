@@ -39,7 +39,6 @@ User.getAllStudents = (req, res) ->
     data = if student then student else ''
     res.send data
 
-
 # Send all teachers
 User.getAllTeachers = (req, res) ->
  
@@ -52,3 +51,37 @@ User.getAllTeachers = (req, res) ->
     # Send all the teachers found
     data = if teacher then teacher else ''
     res.send data
+
+# Create user
+User.createUser = (req, res) ->
+  db      = app.server.set 'db' if not db
+  params  = req.body
+  errCode = [
+    0 # User Exists
+    1 # Params required not met
+  ]
+
+  if params?
+    type = if params.type is "1" then 'teachers' else 'students'
+
+    # Lets make sure user is unique
+    db.users.findOne {'login': params.login}, (err, foundUser) ->
+      res.send err if err
+
+      if foundUser?
+        res.send errCode[0]
+      else 
+        db.users.create params, (err, user) ->
+          res.send err if err
+          if user?
+            db[type].create params, (err, created) ->
+              res.send JSON.stringify(created) if created
+  else
+    res.send errCode[1]
+
+
+#  user
+User.updateUser = (req, res) ->
+
+# Delete user
+User.deleteUser = (req, res) ->

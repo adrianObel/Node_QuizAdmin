@@ -12,8 +12,8 @@ sess.start = (req, res) ->
     login: req.body.user
     pass : req.body.pass
 
-  db  = app.server.set 'db' if not db
-
+  db = app.server.set 'db' if not db
+  
   if params.login? and params.pass? 
     db.users.findOne {'login': params.login,'pass': params.pass}, (err, user) ->
      
@@ -26,7 +26,7 @@ sess.start = (req, res) ->
         
         # Update last login
         db.users.update {'login': params.login}, {$set:{'last_login': new Date()}}
-        
+
         # Save user in session
         req.session.user = _user
         res.send 'true'
