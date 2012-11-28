@@ -13,20 +13,21 @@ module.exports = Student = (_app) ->
 # Student mongoose schema
 Student = new Schema 
   _id       : ObjectId
-  student_id: type: String, index: true
+  student_id: type: String, required: true, index: true
   teacher   : [String]
   exams     : [ObjectId]
 
-Student.create = (_student_id, _teacher, _exams) ->
+Student.statics.create = (data, callback) ->
   date = new Date()
-  db   = app.set 'db' if not db
+  db   = app.server.set 'db' if not db
 
   # Lets create a new user
   student = new db.students
-    student_id: _student_id
-    teacher   : [_teacher]
-    exams     : [_exams]
+    student_id: data.login
 
   # Save student in database
-  student.save (err) ->  return cb err if err
+  student.save (err) ->  
+    callback err if err
+    # Return student in callback
+    callback null, student
 

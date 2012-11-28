@@ -13,17 +13,20 @@ module.exports = Teacher = (_app) ->
 # Teacher mongoose schema
 Teacher = new Schema 
   _id       : ObjectId
-  teacher_id: type: String, index: true
+  teacher_id: type: String, index: true, required: true
 
 
-Teacher.create = (_teacher_id) ->
+Teacher.statics.create = (data, callback) ->
   date = new Date()
-  db   = app.set 'db' if not db
+  db   = app.server.set 'db' if not db
 
-  # Lets create a new teacher
+  #Now lets add it to the teacher collection
   teacher = new db.teachers
-    teacher_id: _teacher_id
+    teacher_id: data.login
 
-  # Save teacher in database
-  teacher.save (err) ->  return cb err if err
+  teacher.save (err) -> 
+    callback err if err
+    callback null, teacher
+
+
 

@@ -13,35 +13,50 @@ module.exports = User = (_app) ->
 # User mongoose schema
 User = new Schema 
   _id           : ObjectId
-  login         : type: String, required:true, index: true 
-  pass          : type: String, required:true
+  type          : type: Number, required: true, index: true
+  login         : type: String, required: true, index: true 
+  pass          : type: String, required: true
   name:
-    first: type: String, required:true
-    last : type: String, required:true
-  email         : type: String, required:true
-  birth_date    : type: Date  , required:true
-  type          : type: Number   
-  last_login    : type: Date, default: Date.now
-  creation_date : type: Date, default: Date.now
+    first: type: String, required: true
+    last : type: String, required: true
+  email         : type: String, required: true
+  birth_date    : type: Date  , required: true
+  last_login    : type: Date
+  creation_date : type: Date
 
-User.create = (_login, _pass, _name, _birth_date) ->
-  date = new Date()
-  db = app.server.set 'db' if not db
-  pass = crypto
+
+User.pre 'save', (next) ->
+  @last_login = new Date()
+  next()
+
+User.statics.create = (data, callback) ->
+  callback 'missing data' if not data
+  
+  date     = new Date()
+  db       = app.server.set 'db' if not db
+  bDate    = new Date data.year, data.month, data.day
+  passHash = crypto
     .createHash('md5')
-    .update(_pass)
+    .update(data.login)
     .digest('hex' )
 
   # Lets create a new user
   user = new db.users
-    login        : _login
-    pass         : _pass
+    type         : data.type
+    login        : data.login
+    pass         : passHash
     name:
-      first: _name.first
-      last : _name.last
-    birth_date: _birth_date
+      first: data.first
+      last : data.last
+    email: data.email
+    birth_date   : bDate
     last_login   : date
     creation_date: date
 
   # Save user in database
-  user.save (err) ->  return callback err if err
+  user.save (err) -> 
+    callback err if err
+
+    # Lets return the user in the callback
+    callback null, user
+
