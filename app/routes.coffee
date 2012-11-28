@@ -25,8 +25,9 @@ module.exports = (_app)->
   app.server.get  '/api/1/user/:id' , controllers.user.getUser
   app.server.put  '/api/1/user/:id' , controllers.user.updateUser
   app.server.del  '/api/1/user/:id' , controllers.user.deleteUser 
-  app.server.get  '/api/1/user'     , controllers.user.getAllUsers 
+  app.server.post '/api/1/user'    , controllers.user.createUser
+  app.server.get  '/api/1/user'    , controllers.user.getAllUsers 
 
   # Api for user searching
-  app.server.get  '/api/1/teacher/' , controllers.user.getAllTeachers
-  app.server.get  '/api/1/student/' , controllers.user.getAllStudents
+  app.server.get  '/api/1/teacher' , controllers.user.getAllTeachers
+  app.server.get  '/api/1/student' , controllers.user.getAllStudents
