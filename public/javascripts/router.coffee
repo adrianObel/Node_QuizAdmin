@@ -5,8 +5,10 @@ define [
   'cs!views/home'
   'cs!views/content/teacher'
   'cs!views/content/student'
-  'cs!views/new/user'
-], ($, _, Backbone, HomeView, TeacherContentView, StudentContentView, NewUserView) ->
+  'cs!views/new/teacher'
+  'cs!views/new/student'
+], ($, _, Backbone, HomeView, TeacherContentView
+ , StudentContentView, NewTeacherView, NewStudentView) ->
 
   # Backbone Router for hashroutes
   class AppRouter extends Backbone.Router
@@ -38,10 +40,10 @@ define [
       student_content = new StudentContentView()
 
     app_router.on 'route:addTeacher', ->
-      new_teacher_content = new NewUserView 1
+      new_teacher_content = new NewTeacherView()
 
     app_router.on 'route:addStudent', ->
-      new_teacher_content = new NewUserView 2
+      new_teacher_content = new NewStudentView()
 
     app_router.on 'route:defaultAction', ->
       $('#content').empty() 
