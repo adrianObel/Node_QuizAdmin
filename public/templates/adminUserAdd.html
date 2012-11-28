@@ -1,1 +1,33 @@
-<div id="content_pane" class="span9"><h1><%=rc.title%></h1><form class="form-horizontal"><div class="control-group"><label for="name" class="control-label">Nombre</label><div class="controls"><input id="name" type="text" placeholder="Por ejemplo, Juan." class="input-xlarge"/></div></div><div class="control-group"><label for="last" class="control-label">Apellido</label><div class="controls"><input id="last" type="text" placeholder="Por ejemplo, Gonzalez" class="input-xlarge"/></div></div><div class="control-group"><label for="cedula" class="control-label">Cedula</label><div class="controls"><input id="cedula" type="text" placeholder="Por ejemplo, 12.345.678" class="input-xlarge"/></div></div><div class="control-group"><label for="email" class="control-label">Correo</label><div class="controls"><input id="email" type="text" placeholder="Por ejemplo, juangonzalez@gmail.com" class="input-xlarge"/></div></div><div class="control-group"><label class="control-label">Fecha de nacimiento</label><div class="controls"><select id="day" class="input-mini"><option>1</option></select><select id="month" class="input-small"><option>Enero</option></select><select id="year" class="input-small"><option>1920</option></select></div></div><button type="submit" class="btn btn-primary"><%=rc.button%></button></form></div>
+<div id="content_pane" class="span9">
+  <h1><%=rc.title%></h1>
+  <form id="user-form" class="form-horizontal">
+    <div class="control-group">
+      <label for="name" class="control-label">Nombre</label>
+      <div class="controls"><input name='first' id="name" type="text" placeholder="Por ejemplo, Juan." class="input-xlarge" /></div>
+    </div>
+    <div class="control-group">
+      <label for="last" class="control-label">Apellido</label>
+      <div class="controls"><input name='last' id="last" type="text" placeholder="Por ejemplo, Gonzalez" class="input-xlarge" /></div>
+    </div>
+    <div class="control-group">
+      <label for="cedula" class="control-label">Cedula</label>
+      <div class="controls"><input name='login' id="cedula" type="text" placeholder="Por ejemplo, 12.345.678" class="input-xlarge" /></div>
+    </div>
+    <div class="control-group">
+      <label for="email" class="control-label">Correo</label>
+      <div class="controls"><input name='email' id="email" type="text" placeholder="Por ejemplo, juangonzalez@gmail.com" class="input-xlarge" /></div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Fecha de nacimiento</label>
+      <div class="controls controls-row">
+        <input name='day' class='span1' id="day" type="text" placeholder="18" />
+        <input name='month' class='span1' id="month" type="text" placeholder="1" />
+        <input name='year' class='span1' id="year" type="text" placeholder="1994" />
+      </div>
+    </div>
+    <input type='hidden' name='type' value=<%=rc.type%> >
+    <button type="submit" class="btn btn-primary"><%=rc.button%></button>
+    <span id="lbError" style="display:none" class="label label-important"></span>
+    <span id="lbSuccess" style="display:none" class="label label-success"></span>
+  </form>
+</div>
