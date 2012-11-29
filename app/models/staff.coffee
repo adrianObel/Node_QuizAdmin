@@ -15,14 +15,17 @@ Staff = new Schema
   _id     : ObjectId
   staff_id: type: String, index: true
 
-Staff.create = (_staff_id) ->
+Staff.statics.create = (data, callback) ->
   date = new Date()
   db   = app.set 'db' if not db
 
   # Lets create a new staff memeber
   staff = new db.staff
-    staff_id: _staff_id
+    staff_id: data.login
 
   # Save staff member in database
-  staff.save (err) ->  return cb err if err
-
+  staff.save (err) ->  
+    callback err if err
+    # Return student in callback
+    callback null, staff
+ 

@@ -35,11 +35,7 @@ User.statics.create = (data, callback) ->
   date     = new Date()
   db       = app.server.set 'db' if not db
   bDate    = new Date data.year, data.month, data.day
-  passHash = crypto
-    .createHash('md5')
-    .update(data.login)
-    .digest('hex' )
-
+  passHash = app.utils.encrypt data.login
   # Lets create a new user
   user = new db.users
     type         : data.type
