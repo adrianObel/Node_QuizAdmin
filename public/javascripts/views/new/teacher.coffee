@@ -31,8 +31,8 @@ define [
       'click button': 'addTeacher'
 
     addTeacher: (e) ->
-      
       $form = $('#user-form')
+
       $form.submit (e) ->
         e.preventDefault()
         $inputs        = $form.find('input, select, button, textarea')
