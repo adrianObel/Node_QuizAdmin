@@ -38,14 +38,15 @@ define [
             that.content_page = new ContentHomeView()
 
     events: 
-      'click #goHome'    : 'goHome'
-      'click #goTeachers': 'goTeachers'
-      'click #goStudents': 'goStudents'
+      'click #goHome'         : 'goHome'
+      'click #goTeachers'     : 'goTeachers'
+      'click #goStudents'     : 'goStudents'
+      'click #createQuestions': 'goCreateQustions'
 
-    goHome    : (e) -> window.location.hash = '/'
-    goTeachers: (e) -> window.location.hash = '/teachers'
-    goStudents: (e) -> window.location.hash = '/students'
-
+    goHome          : (e) -> window.location.hash = '/'
+    goTeachers      : (e) -> window.location.hash = '/teachers'
+    goStudents      : (e) -> window.location.hash = '/students'
+    goCreateQustions: (e) -> window.location.hash = '/teachers/questions'
       
 
     
