@@ -6,7 +6,7 @@ express  = require 'express'
 http     = require 'http'
 path     = require 'path'
 mongoose = require 'mongoose'
-
+utils    = require './app/utils'
 
 app      = {}
 server   = express()
@@ -15,6 +15,7 @@ db       = mongoose.createConnection 'mongodb://localhost/QuizAdmin'
 # App wide GLOBALS
 app.db     = db
 app.server = server
+app.utils  = utils
 
 # Database Models
 mongoose.model 'User'   , require('./app/models/user'   )(app)
