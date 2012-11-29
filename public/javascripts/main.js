@@ -9,7 +9,7 @@ require({
   , 'coffee-script': 'libs/coffee-script'
   }
 , shim: {
-    'backbone' : {
+  'backbone' : {
       deps: ['jquery', 'underscore']
     , exports: 'backbone'
     }
