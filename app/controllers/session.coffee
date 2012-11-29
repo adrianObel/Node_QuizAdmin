@@ -8,14 +8,15 @@ module.exports = sess = (_app) ->
 
 
 sess.start = (req, res) ->
+  db     = app.server.set 'db' if not db
   params =
     login: req.body.user
     pass : req.body.pass
 
-  db = app.server.set 'db' if not db
-  
+  pass = app.utils.encrypt params.pass
+
   if params.login? and params.pass? 
-    db.users.findOne {'login': params.login,'pass': params.pass}, (err, user) ->
+    db.users.findOne {'login': params.login,'pass': pass}, (err, user) ->
      
       if user?
         _user =
