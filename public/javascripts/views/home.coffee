@@ -6,7 +6,8 @@ define [
   'cs!models/user'
   'cs!views/content/home'
   'text!/../templates/sideMenuAdmin.html'
-], ($, _, Backbone, UserModel, ContentHomeView, AdminMenu) ->
+  'text!/../templates/sideMenuTeacher.html'
+], ($, _, Backbone, UserModel, ContentHomeView, AdminMenu, TeacherMenu) ->
 
   class HomeView extends Backbone.View
     el: '#content'
@@ -30,7 +31,11 @@ define [
           if userType is 0
             admin_template = _.template AdminMenu, {}
             that.$el.append admin_template
-            that.content_page  = new ContentHomeView()
+            that.content_page = new ContentHomeView()
+          else 
+            teacher_template = _.template TeacherMenu, {}
+            that.$el.append teacher_template
+            that.content_page = new ContentHomeView()
 
     events: 
       'click #goHome'    : 'goHome'
