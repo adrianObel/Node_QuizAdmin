@@ -10,5 +10,3 @@ Utils.encrypt = (str) ->
     .createHash('md5')
     .update(str)
     .digest('hex' )
-
-
