@@ -23,7 +23,7 @@ mongoose.model 'Staff'  , require('./app/models/staff'  )(app)
 mongoose.model 'Teacher', require('./app/models/teacher')(app)
 mongoose.model 'Student', require('./app/models/student')(app)
 mongoose.model 'Exam'   , require('./app/models/exam'   )(app)
-
+mongoose.model 'Topic'  , require('./app/models/topic'  )(app)
 
 server.configure ->
   server.set 'port', process.env.PORT or 3000
@@ -44,6 +44,7 @@ server.configure ->
     staff   : db.model 'Staff'
     teachers: db.model 'Teacher'
     students: db.model 'Student'
+    topics  : db.model 'Topic'
     exams   : db.model 'Exam'
 
 server.configure 'development', ->
