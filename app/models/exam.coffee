@@ -15,9 +15,9 @@ Exam = new Schema
   _id       : ObjectId
   teacher_id: type: String
   questions : [
-                title    : type: String
-                selection: [type: String]
-                answer   : type: Number
+    title    : type : String
+    selection: [type: String]
+    answer   : type : Number
   ]
 
 Exam.create = (_teacher_id, _selection) ->
