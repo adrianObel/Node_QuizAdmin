@@ -1,0 +1,7 @@
+<ul>
+  <% _.each(rc.listExams, function(exam) {%>
+    <% _.each(exam.questions, function(question) {%>
+      <li class="listExams"><%=question.title%></li>
+    <%})%>
+  <%})%>
+</ul>

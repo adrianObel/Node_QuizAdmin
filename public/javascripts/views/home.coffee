@@ -7,7 +7,8 @@ define [
   'cs!views/content/home'
   'text!/../templates/sideMenuAdmin.html'
   'text!/../templates/sideMenuTeacher.html'
-], ($, _, Backbone, UserModel, ContentHomeView, AdminMenu, TeacherMenu) ->
+  'text!/../templates/sideMenuStudent.html'
+], ($, _, Backbone, UserModel, ContentHomeView, AdminMenu, TeacherMenu, StudentMenu) ->
 
   class HomeView extends Backbone.View
     el: '#content'
@@ -32,21 +33,28 @@ define [
             admin_template = _.template AdminMenu, {}
             that.$el.append admin_template
             that.content_page = new ContentHomeView()
-          else 
+          else if userType is 1 
             teacher_template = _.template TeacherMenu, {}
             that.$el.append teacher_template
             that.content_page = new ContentHomeView()
-
+          else if userType is 2
+            student_template = _.template StudentMenu, {}
+            that.$el.append student_template
+            that.content_page = new ContentHomeView()
     events: 
       'click #goHome'         : 'goHome'
       'click #goTeachers'     : 'goTeachers'
       'click #goStudents'     : 'goStudents'
-      'click #createQuestions': 'goCreateQustions'
+      'click #createQuestions': 'goCreateQuestions'
+      'click #createExam'     : 'goCreateExam'
+      'click #checkExams'     : 'goLookExam'
 
-    goHome          : (e) -> window.location.hash = '/'
-    goTeachers      : (e) -> window.location.hash = '/teachers'
-    goStudents      : (e) -> window.location.hash = '/students'
-    goCreateQustions: (e) -> window.location.hash = '/teachers/questions'
+    goHome           : (e) -> window.location.hash = '/'
+    goTeachers       : (e) -> window.location.hash = '/teachers'
+    goStudents       : (e) -> window.location.hash = '/students'
+    goCreateQuestions: (e) -> window.location.hash = '/teachers/questions'
+    goCreateExam     : (e) -> window.location.hash = '/teachers/exam'
+    goLookExam       : (e) -> window.location.hash = '/students/exam'
       
 
     

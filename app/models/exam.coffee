@@ -13,22 +13,26 @@ module.exports = Exam = (_app) ->
 # Staff mongoose schema
 Exam = new Schema 
   _id       : ObjectId
-  teacher_id: type: String
+  name      : type: String, required: true
   questions : [
-    title    : type : String
-    selection: [type: String]
-    answer   : type : Number
+    title   : type : String
+    choice  : [type: String]
+    answer  : type : Number
   ]
 
-Exam.create = (_teacher_id, _selection) ->
+Exam.statics.create = (data, callback) ->
   date = new Date()
-  db   = app.set 'db' if not db
+  db   = app.server.set 'db' if not db
+
+  callback 'Missing data' if not data?
 
   # Lets create a new exam
   exam = new db.exams
-    teacher_id: _teacher_id
-    selection : _selection
+    name: data.name
+    questions : data.questions
 
   # Save exam in database
-  exam.save (err) ->  return cb err if err
+  exam.save (err) ->  
+    callback err if err
+    callback null, exam
 

@@ -1,0 +1,15 @@
+<div id="content_pane" class="span9">
+  <h1><%=rc.title%></h1><div class="searchBar">
+  <input id="search" type="text" placeholder="Filtrar. Por ejemplo, Examen 1" class="search-query span9"/>
+</div>
+<br/>
+<div class="row">
+  <% _.each(rc.listExams, function(list) {%>
+    <% _.each(list.exams, function(exam) {%>
+    <div id="<%=exam.name%>" class="span2">
+      <a><img src="img/examIcon2.png" class="img-rounded"/></a>
+      <label><%=exam.name%></label>
+    </div>
+    <%});%>
+  <%});%>
+</div>

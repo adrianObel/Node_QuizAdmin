@@ -11,12 +11,12 @@ module.exports = Topic = (_app) ->
 
 # Topic mongoose schema
 Topic = new Schema 
-  _id       : ObjectId
-  name      : type: String, required: true, index: true
-  questions : [
-    title    : type: String
-    selection: [type: String]
-    answer   : type: Number
+  _id      : ObjectId
+  name     : type: String, required: true, index: true
+  questions: [
+    title  : type: String
+    choice : [type: String]
+    answer : type: Number
   ]
 
 
@@ -27,6 +27,7 @@ Topic.statics.create = (data, callback) ->
   #Now lets add it to the topic collection
   topic = new db.topics
     name: data.name
+    questions: data.questions
 
   topic.save (err) -> 
     callback err if err

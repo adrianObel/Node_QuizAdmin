@@ -2,12 +2,12 @@
 app = null
 db  = null
 
-module.exports = sess = (_app) ->
+module.exports = Session = (_app) ->
   app = _app
-  sess
+  Session
 
 
-sess.start = (req, res) ->
+Session.start = (req, res) ->
   db     = app.server.set 'db' if not db
   params =
     login: req.body.user
@@ -36,7 +36,7 @@ sess.start = (req, res) ->
   else
     res.send 'false'
 
-sess.destroy = (req, res) ->
+Session.destroy = (req, res) ->
   req.session.regenerate -> 
     res.send '{}'
 

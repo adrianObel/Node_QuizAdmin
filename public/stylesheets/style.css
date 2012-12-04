@@ -27,3 +27,16 @@
 .fucked-up-form {
   width: 395px;
 }
+.listExams {
+  display: block;
+  list-style: none;
+  border-bottom-style: solid;
+  height: auto;
+}
+.question_bank,
+.exam_questions {
+  width: 100%;
+  height: 300px;
+  border: solid;
+  overflow-y: auto;
+}

@@ -5,11 +5,14 @@ define [
   'cs!views/home'
   'cs!views/content/teacher/teacher'
   'cs!views/content/student/student'
-  'cs!views/new/teacher'
-  'cs!views/new/student'
-  'cs!views/content/teacher/questions'
+  'cs!views/content/teacher/newTeacher'
+  'cs!views/content/student/newStudent'
+  'cs!views/content/teacher/newQuestions'
+  'cs!views/content/teacher/newExam'
+  'cs!views/content/student/exams'
 ], ($, _, Backbone, HomeView, TeacherContentView
- , StudentContentView, NewTeacherView, NewStudentView, CreateQuestionsView) ->
+ , StudentContentView, NewTeacherView, NewStudentView, CreateQuestionsView
+ , CreateExamView, CheckExamsView) ->
 
   # Backbone Router for hashroutes
   class AppRouter extends Backbone.Router
@@ -23,8 +26,12 @@ define [
       # Route to add new student
       'students/new': 'addStudent'
       # Route to make questions
-      'teachers/questions': 'makeQuestions'
+      'teachers/questions': 'addQuestions'
+      # Route to make exams
+      'teachers/exam': 'addExam'
 
+      # Route to see exams
+      'students/exam': 'checkExams'
       #Default action takes me to home
       '*action': 'defaultAction'
 
@@ -48,8 +55,14 @@ define [
     app_router.on 'route:addStudent', ->
       new_teacher_content = new NewStudentView()
 
-    app_router.on 'route:makeQuestions', ->
+    app_router.on 'route:addQuestions', ->
       create_questions_view = new CreateQuestionsView()
+
+    app_router.on 'route:addExam', ->
+      create_exam_view = new CreateExamView()
+
+    app_router.on 'route:checkExams', ->
+      check_exams_view = new CheckExamsView()
 
     app_router.on 'route:defaultAction', ->
       $('#content').empty() 

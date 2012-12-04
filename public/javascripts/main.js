@@ -7,9 +7,14 @@ require({
   , text: 'libs/text'
   , bootstrap: 'libs/bootstrap'
   , 'coffee-script': 'libs/coffee-script'
+  , 'jquery-ui': 'libs/jquery-ui-min'
   }
 , shim: {
-  'backbone' : {
+    'jquery-ui': {
+      deps: ['jquery']
+    , exports: 'jquery'
+    }
+  , 'backbone' : {
       deps: ['jquery', 'underscore']
     , exports: 'backbone'
     }

@@ -29,7 +29,7 @@ User.pre 'save', (next) ->
   next()
 
 User.statics.create = (data, callback) ->
-  callback 'missing data' if not data
+  callback 'missing data' if not data?
   
   date     = new Date()
   db       = app.server.set 'db' if not db

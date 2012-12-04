@@ -11,10 +11,13 @@ module.exports = Student = (_app) ->
 
 # Student mongoose schema
 Student = new Schema 
-  _id       : ObjectId
-  student_id: type: String, required: true, index: true
-  teacher   : [String]
-  exams     : [ObjectId]
+  _id          : ObjectId
+  student_id   : type: String, required: true, index: true
+  teacher_id   : [String]
+  exams        : [
+    name : type: String
+    score: type: String
+  ]
 
 Student.statics.create = (data, callback) ->
   date = new Date()
@@ -23,6 +26,7 @@ Student.statics.create = (data, callback) ->
   # Lets create a new user
   student = new db.students
     student_id: data.login
+    exams     : []
 
   # Save student in database
   student.save (err) ->  
